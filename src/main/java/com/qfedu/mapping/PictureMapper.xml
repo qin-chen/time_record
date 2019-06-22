@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        <mapper namespace="com.qfedu.dao.PictureDao">
+    <resultMap id="pictureMap" type="com.qfedu.pojo.Picture">
+        <id column="pic_id" property="picId"></id>
+        <result column="pic_path" property="picPath"></result>
+        <result column="pic_type" property="picType"></result>
+    </resultMap>
+    <select id="findPictureById" parameterType="list" resultMap="pictureMap">
+        select *from t_picture where pic_id in
+        <foreach collection="list" item="picId" open="(" close=")" index="" separator=",">
+            #{picId}
+        </foreach>
+    </select>
+    <select id="findAllPicture" resultMap="pictureMap">
+        SELECT *from t_pictures where pic_type =1
+    </select>
+    </mapper>
