@@ -8,6 +8,11 @@
         <result column="password" property="password"></result>
         <result column="email" property="email"></result>
         <result column="status" property="status"></result>
+        <result column="babyage" property="babyage"></result>
+        <result column="focuscount" property="focuscount"></result>
+        <result column="fanscount" property="fanscount"></result>
+        <result column="headphoto" property="headphoto"></result>
+        <result column="babyname" property="babyname"></result>
     </resultMap>
     <select id="login" parameterType="map" resultMap="userMap">
         select * from t_user where username= #{username} and password =#{password}

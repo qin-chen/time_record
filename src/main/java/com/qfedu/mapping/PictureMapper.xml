@@ -14,6 +14,9 @@
         </foreach>
     </select>
     <select id="findAllPicture" resultMap="pictureMap">
-        SELECT *from t_pictures where pic_type =1
+        SELECT *from t_picture where pic_type =1
+    </select>
+    <select id="findAllFoodListPicture" resultMap="pictureMap">
+        SELECT *from t_picture where pic_type =2
     </select>
     </mapper>

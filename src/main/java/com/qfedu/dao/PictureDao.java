@@ -10,4 +10,5 @@ import java.util.List;
 public interface PictureDao {
     public Picture findPictureById(List<Integer> picId);
     public List<Picture> findAllPicture();
+    public List<Picture> findAllFoodListPicture();
 }
