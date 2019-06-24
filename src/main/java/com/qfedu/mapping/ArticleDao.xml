@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qfedu.dao.ArticleDao">
+    <resultMap id="resultArticle" type="com.qfedu.pojo.Article">
+        <id column="aid" property="aid"></id>
+        <result column="article" property="article"></result>
+        <result column="uid" property="uid"></result>
+        <result column="createtime" property="createtime"></result>
+        <association property="user" resultMap="resultUser"></association>
+    </resultMap>
+    <resultMap id="resultUser" type="com.qfedu.pojo.User">
+        <id column="uid" property="uid"></id>
+        <result column="username" property="username"></result>
+        <result column="password" property="password"></result>
+        <result column="email" property="email"></result>
+        <result column="status" property="status"></result>
+        <result column="babyage" property="babyage"></result>
+        <result column="focuscount" property="focuscount"></result>
+        <result column="fanscount" property="fanscount"></result>
+        <result column="headphoto" property="headphoto"></result>
+        <result column="babyname" property="babyname"></result>
+    </resultMap>
+    <select id="findAllArticle" parameterType="Integer" resultMap="resultArticle">
+        select * from t_article a left join t_user u on a.uid = u.uid where a.uid = #{id}
+    </select>
+    <select id="findAlluserAll12" parameterType="Integer" resultMap="resultUser">
+        select * from t_user where uid !=#{id} limit 0,12
+    </select>
+    <insert id="addFocusById" parameterType="Integer">
+        insert into t_focus values(#{param1},#{param2})
+    </insert>
+</mapper>
