@@ -33,4 +33,10 @@ public class PictureController {
         List<Picture> foodListPicture = pictureService.findAllFoodListPicture();
         return new JsonBean(1,foodListPicture);
     }
+   /* @ResponseBody
+    @RequestMapping("/iseat")
+    public JsonBean findIsEat(){
+        List<Picture> IsEatList  = pictureService.findIsEatPicture();
+        return new JsonBean(1,IsEatList);
+    }*/
 }

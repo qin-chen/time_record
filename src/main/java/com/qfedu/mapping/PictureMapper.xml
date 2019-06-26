@@ -19,4 +19,7 @@
     <select id="findAllFoodListPicture" resultMap="pictureMap">
         SELECT *from t_picture where pic_type =2
     </select>
+    <select id="findIsEatPicture" resultMap="pictureMap">
+        SELECT *from t_picture where pic_type =3
+    </select>
     </mapper>

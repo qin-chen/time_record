@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        <mapper namespace="com.qfedu.dao.MenuDao">
+    <resultMap id="menumap" type="com.qfedu.pojo.Menu">
+        <id column="mid" property="mid"></id>
+        <result column="m_imgpath" property="imgpath"></result>
+        <result column="m_content" property="content"></result>
+        <result column="type" property="type"></result>
+    </resultMap>
+    <select id="findAll" resultMap="menumap">
+        select *from t_menu where type = 1
+    </select>
+    <select id="findAll02" resultMap="menumap">
+        SELECT  *from t_menu where type = 2
+    </select>
+</mapper>

@@ -9,4 +9,5 @@ import java.util.List;
  */
 public interface FoodListContentDao {
     public List<FoodListContent> findAllContent();
+    public FoodListContent findContent(Integer id);
 }

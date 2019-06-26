@@ -9,4 +9,5 @@ import java.util.List;
  */
 public interface FoodListContentService {
     public List<FoodListContent> findAllContent();
+    public FoodListContent findContent(Integer id);
 }

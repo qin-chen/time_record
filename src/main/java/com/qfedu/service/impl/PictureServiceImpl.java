@@ -31,4 +31,10 @@ public class PictureServiceImpl implements PictureService {
         List<Picture> foodListPicture = pictureDao.findAllFoodListPicture();
         return foodListPicture;
     }
+
+    @Override
+    public List<Picture> findIsEatPicture() {
+        List<Picture> list =   pictureDao.findIsEatPicture();
+        return list;
+    }
 }

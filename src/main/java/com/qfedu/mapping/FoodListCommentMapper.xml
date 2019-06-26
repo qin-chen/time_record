@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        <mapper namespace="com.qfedu.dao.FoodListCommentDao">
+    <resultMap id="foodlistComment" type="com.qfedu.pojo.FoodListComment">
+        <id column="comment_id" property="commentId"></id>
+        <result column="comment_question" property="commentQuestion"></result>
+        <result column="comment_advice" property="commentAdvice"></result>
+        <result column="comment_detail_advice" property="commentDetailAdvice"></result>
+        <association property="foodListContent" resultMap="com.qfedu.dao.FoodListContentDao.foodlistMap"></association>
+    </resultMap>
+    <select id="findCommentById" parameterType="Integer" resultMap="foodlistComment">
+        SELECT f.comment_question,f.comment_advice,f.comment_detail_advice from t_foodlist_comment f
+        INNER JOIN t_food_list o
+        on f.comment_foodlist_id = o.food_list_id
+        WHERE o.food_list_id = #{id}
+    </select>
+</mapper>

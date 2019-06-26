@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        <mapper namespace="com.qfedu.dao.FoodDao">
+    <resultMap id="foodmap" type="com.qfedu.pojo.Food">
+        <id column="f_id" property="fid"></id>
+        <result column="f_name" property="fname"></result>
+        <result column="f_stage1" property="fstage1"></result>
+        <result column="f_stage2" property="fstage2"></result>
+        <result column="f_stage3" property="fstage3"></result>
+        <result column="f_advice" property="fadvice"></result>
+        <result column="f_imgpath" property="fimgpath"></result>
+        <association property="foodListComment" resultMap="com.qfedu.dao.FoodListCommentDao.foodlistComment"></association>
+        <association property="foodListContent" resultMap="com.qfedu.dao.FoodListContentDao.foodlistMap"></association>
+    </resultMap>
+    <select id="findall"  parameterType="Integer" resultMap="foodmap">
+       SELECT f.f_id ,f.f_name,f.f_stage1,f.f_stage2,f.f_stage3,f.f_advice,f.f_imgpath from  t_food f
+         INNER JOIN t_menu m
+        on f.f_typeid = m.mid
+        where m.mid = #{id}
+    </select>
+    <select id="findall01" parameterType="Integer" resultMap="foodmap">
+        SELECT l.food_list_imgpath , l.food_list_contentdetail , o.comment_question ,o.comment_advice, o.comment_detail_advice from t_food f
+       INNER JOIN t_foodlist_comment o
+       on f.f_id = o.comment_foodlist_id
+       INNER JOIN t_food_list l
+       on o.comment_foodlist_id= l.food_list_id
+        where f.f_id=#{id}
+    </select>
+</mapper>

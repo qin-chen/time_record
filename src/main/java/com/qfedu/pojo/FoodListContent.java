@@ -7,7 +7,8 @@ public class FoodListContent {
     private Integer foodListId;
     private String foodListImgpath;
     private String foodListContent;
-
+    private String foodListContentDetail;
+    private String suitAge;
     public Integer getFoodListId() {
         return foodListId;
     }
@@ -30,5 +31,21 @@ public class FoodListContent {
 
     public void setFoodListContent(String foodListContent) {
         this.foodListContent = foodListContent;
+    }
+
+    public String getFoodListContentDetail() {
+        return foodListContentDetail;
+    }
+
+    public void setFoodListContentDetail(String foodListContentDetail) {
+        this.foodListContentDetail = foodListContentDetail;
+    }
+
+    public String getSuitAge() {
+        return suitAge;
+    }
+
+    public void setSuitAge(String suitAge) {
+        this.suitAge = suitAge;
     }
 }

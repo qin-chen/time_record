@@ -21,4 +21,10 @@ public class FoodListContentServiceImpl implements FoodListContentService {
         List<FoodListContent> foodListContents = foodListContentDao.findAllContent();
         return foodListContents;
     }
+
+    @Override
+    public FoodListContent findContent(Integer id) {
+        FoodListContent foodListContent = foodListContentDao.findContent(id);
+        return foodListContent;
+    }
 }

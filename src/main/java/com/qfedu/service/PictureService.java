@@ -11,4 +11,6 @@ public interface PictureService {
     public Picture findPictureById(List<Integer> pid);
     public List<Picture> findAllPicture();
     public List<Picture> findAllFoodListPicture();
+
+    List<Picture> findIsEatPicture();
 }

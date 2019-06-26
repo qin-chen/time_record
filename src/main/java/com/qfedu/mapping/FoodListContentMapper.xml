@@ -7,9 +7,10 @@
         <result column="food_list_imgpath" property="foodListImgpath"></result>
         <result column="food_list_content" property="foodListContent"></result>
         <result column="food_list_contentdetail" property="foodListContentDetail"></result>
+        <result column="suit_age" property="suitAge"></result>
     </resultMap>
     <select id="findAllContent" resultMap="foodlistMap">
-        select food_list_id,food_list_imgpath,food_list_content from t_food_list
+        select food_list_id,food_list_imgpath,food_list_content ,food_list_contentdetail ,suit_age from t_food_list
     </select>
     <select id="findContent" resultMap="foodlistMap" parameterType="Integer">
         SELECT food_list_imgpath,food_list_contentdetail from t_food_list  where  food_list_id =#{id}
