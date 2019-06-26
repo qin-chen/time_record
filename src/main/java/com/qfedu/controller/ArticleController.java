@@ -22,8 +22,6 @@ public class ArticleController {
     private ArticleService articleService;
     @RequestMapping("/articleAll.do")//查询所有文章
     public JsonBean findAllArticle(Integer id,Integer status){
-        id = 1;
-        status = 1;
         List<Article> list = articleService.findAllArticle(id,status);
         return new JsonBean(1,list);
     }
