@@ -18,8 +18,8 @@ public class ArticleServiceImpl implements ArticleService {
     private ArticleDao articleDao;
 
     @Override
-    public List<Article> findAllArticle(Integer id) {
-        return articleDao.findAllArticle(id);
+    public List<Article> findAllArticle(Integer id,Integer status) {
+        return articleDao.findAllArticle(id,status);
     }
 
     @Override

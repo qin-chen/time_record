@@ -7,7 +7,9 @@
         <result column="article" property="article"></result>
         <result column="uid" property="uid"></result>
         <result column="createtime" property="createtime"></result>
+        <result column="status" property="status"></result>
         <association property="user" resultMap="resultUser"></association>
+        <association property="picture" resultMap="pictureMap"></association>
     </resultMap>
     <resultMap id="resultUser" type="com.qfedu.pojo.User">
         <id column="uid" property="uid"></id>
@@ -21,8 +23,22 @@
         <result column="headphoto" property="headphoto"></result>
         <result column="babyname" property="babyname"></result>
     </resultMap>
+    <resultMap id="pictureMap" type="com.qfedu.pojo.Picture">
+        <id column="pic_id" property="picId"></id>
+        <result column="pic_path" property="picPath"></result>
+        <result column="pic_type" property="picType"></result>
+    </resultMap>
     <select id="findAllArticle" parameterType="Integer" resultMap="resultArticle">
-        select * from t_article a left join t_user u on a.uid = u.uid where a.uid = #{id}
+        select a.*,p.pic_path,u.* from t_article a
+        left join t_picture p
+        on a.pid = p.pic_id
+        left join t_user u
+        on a.uid = u.uid
+        left join t_focus f
+        on u.uid = f.ffid where f.uuid = #{param1}
+        <if test="param2 ==1 || param2 ==2 || param2 ==3 || param2 ==4 || param2 ==5">
+            and a.status = #{param2}
+        </if>
     </select>
     <select id="findAlluserAll12" parameterType="Integer" resultMap="resultUser">
         select * from t_user where uid !=#{id} limit 0,12

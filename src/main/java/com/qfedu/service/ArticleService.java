@@ -9,7 +9,7 @@ import java.util.List;
  * Created by Administrator on 2019/6/22 0022.
  */
 public interface ArticleService {
-    List<Article> findAllArticle(Integer id);
+    List<Article> findAllArticle(Integer id,Integer status);
 
     List<User> findAlluserAll12(Integer id);
 

@@ -21,8 +21,10 @@ public class ArticleController {
     @Autowired
     private ArticleService articleService;
     @RequestMapping("/articleAll.do")//查询所有文章
-    public JsonBean findAllArticle(Integer id){
-        List<Article> list = articleService.findAllArticle(id);
+    public JsonBean findAllArticle(Integer id,Integer status){
+        id = 1;
+        status = 1;
+        List<Article> list = articleService.findAllArticle(id,status);
         return new JsonBean(1,list);
     }
     @RequestMapping("/userAll12.do")//查询所有需要关注的人
@@ -32,6 +34,7 @@ public class ArticleController {
     }
     @RequestMapping("/addFocus.do")
     public JsonBean addFocusById(Integer uid,String[] fids){
+        System.out.println(uid+"****"+fids);
         if(fids != null){
             for(String aid:fids) {
                 Integer fid = Integer.parseInt(aid);

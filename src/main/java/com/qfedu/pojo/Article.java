@@ -10,7 +10,9 @@ public class Article {
     private String article;
     private Integer uid;
     private Date createtime;
+    private Integer status;
     private User user;
+    private Picture picture;
 
     @Override
     public String toString() {
@@ -19,8 +21,26 @@ public class Article {
                 ", article='" + article + '\'' +
                 ", uid=" + uid +
                 ", createtime=" + createtime +
+                ", status=" + status +
                 ", user=" + user +
+                ", picture=" + picture +
                 '}';
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public Picture getPicture() {
+        return picture;
+    }
+
+    public void setPicture(Picture picture) {
+        this.picture = picture;
     }
 
     public Date getCreatetime() {
