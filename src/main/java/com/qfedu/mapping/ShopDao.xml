@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qfedu.dao.ShopDao">
+    <resultMap id="resultMapShop" type="com.qfedu.pojo.Shop">
+        <id column="sid" property="sid"></id>
+        <result column="sname" property="sname"></result>
+        <result column="shopid" property="shopid"></result>
+        <result column="spirce" property="sprice"></result>
+        <result column="sminprice" property="sminprice"></result>
+        <result column="designer" property="designer"></result>
+        <result column="color_id" property="colorId"></result>
+        <result column="texture" property="texture"></result>
+        <result column="good_age" property="goodAge"></result>
+        <result column="good_comment" property="goodComment"></result>
+        <result column="shop_status" property="shopStatus"></result>
+        <association property="color" resultMap="resultColor"></association>
+        <association property="picture" resultMap="pictureMap"></association>
+    </resultMap>
+    <resultMap id="pictureMap" type="com.qfedu.pojo.Picture">
+        <id column="pic_id" property="picId"></id>
+        <result column="pic_path" property="picPath"></result>
+        <result column="pic_type" property="picType"></result>
+    </resultMap>
+    <resultMap id="resultColor" type="com.qfedu.pojo.Color">
+        <id column="colorid" property="colorid"></id>
+        <result column="color" property="color"></result>
+    </resultMap>
+    <select id="findAllShop" parameterType="com.qfedu.pojo.Shop" resultMap="resultMapShop">
+        select * from t_shop s
+        left join t_color c
+        on s.color_id = c.colorid
+        left join t_picture p
+        on s.shopid = p.pic_id
+        <where>
+            <if test="shopStatus ==1 || shopStatus ==2 || shopStatus ==3 || shopStatus ==4">
+                and s.shop_status = #{shopStatus}
+            </if>
+        </where>
+        limit 0,9
+    </select>
+    <select id="findAllShop2" resultMap="resultMapShop">
+        select * from t_shop s
+        left join t_color c
+        on s.color_id = c.colorid
+        left join t_picture p
+        on s.shopid = p.pic_id
+        limit 0,5
+    </select>
+    <select id="findShop" parameterType="Integer" resultMap="resultMapShop">
+        select * from t_shop s
+        left join t_color c
+        on s.color_id = c.colorid
+        left join t_picture p
+        on s.shopid = p.pic_id
+        where s.sid = #{sid}
+    </select>
+</mapper>
