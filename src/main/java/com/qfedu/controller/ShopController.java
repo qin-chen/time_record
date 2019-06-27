@@ -39,7 +39,6 @@ public class ShopController {
     }
     @RequestMapping("/shop.do")//单个商品
     public JsonBean findShop(Integer sid){
-        sid = 1;
         Shop shop = shopService.findShop(sid);
         return new JsonBean(1,shop);
     }
