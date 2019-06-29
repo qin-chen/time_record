@@ -11,7 +11,7 @@
     <title>Title</title>
 </head>
 <body>
-<form action="/user/register" method="get" >
+<form action=""${pageContext.request.contextPath}/user/register" method="get" >
     <input type="text" name="username" >
     <input type="text" name="password" >
     <input type="submit" value="login" onsubmit="return false;">
