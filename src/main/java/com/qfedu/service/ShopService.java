@@ -1,6 +1,9 @@
 package com.qfedu.service;
 
+import com.qfedu.pojo.Color;
+import com.qfedu.pojo.Picture;
 import com.qfedu.pojo.Shop;
+import com.qfedu.pojo.ShopComment;
 
 import java.util.List;
 
@@ -13,4 +16,10 @@ public interface ShopService {
     List<Shop> findAllShop2();
 
     Shop findShop(Integer sid);
+
+    List<Color> findColor(Integer sid);
+
+    List<Picture> findPicture(Integer sid);
+
+    List<ShopComment> findComment(Integer sid);
 }

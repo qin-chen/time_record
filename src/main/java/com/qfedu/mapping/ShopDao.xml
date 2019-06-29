@@ -26,6 +26,16 @@
         <id column="colorid" property="colorid"></id>
         <result column="color" property="color"></result>
     </resultMap>
+    <resultMap id="resultShopComment" type="com.qfedu.pojo.ShopComment">
+        <id column="id" property="id"></id>
+        <result column="shop_comment" property="shopComment"></result>
+        <result column="shop_score" property="shopScore"></result>
+        <result column="create_time" property="createTime"></result>
+        <result column="username" property="userName"></result>
+        <result column="headphoto" property="headPhoto"></result>
+        <result column="pic_path" property="shopPictrue"></result>
+        <result column="merchant_comment" property="merchantComment"></result>
+    </resultMap>
     <select id="findAllShop" parameterType="com.qfedu.pojo.Shop" resultMap="resultMapShop">
         select * from t_shop s
         left join t_color c
@@ -54,5 +64,29 @@
         left join t_picture p
         on s.shopid = p.pic_id
         where s.sid = #{sid}
+    </select>
+    <select id="findPicture" parameterType="Integer" resultMap="pictureMap">
+        select p.pic_id,p.pic_path from t_shop_color_picture scp
+        left join t_picture p
+        on scp.pid = p.pic_id
+        where scp.sid = #{sid}
+    </select>
+    <select id="findColor" parameterType="Integer" resultMap="resultColor">
+        select c.* from t_shop_color_picture scp
+        left join t_color c
+        on scp.cid = c.colorid
+        where scp.sid = #{sid}
+    </select>
+    <select id="findComment" parameterType="Integer" resultMap="resultShopComment">
+        select * from t_shop_comment sc
+        left join t_user u
+        on sc.comment_people = u.uid
+        left join t_merchant_comment mc
+        on sc.comment_id = mc.merchant_id
+        left join t_shop s
+        on sc.shop_id = s.sid
+        left join t_picture p
+        on s.shopid = p.pic_id
+        where sc.shop_id = #{sid}
     </select>
 </mapper>
